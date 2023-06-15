@@ -35,7 +35,8 @@ public class VotingControllerServlet1 extends HttpServlet {
             if(cid == null){
                 ArrayList<CandidateVote> candidatelist = CandidateDao.viewCandidate(userid);
                 request.setAttribute("candidatelist", candidatelist);
-                rd = request.getRequestDispatcher("showCandidate.jsp");
+//                request.setAttribute("hello", hello);
+                rd = request.getRequestDispatcher("showCandidate2.jsp");
             }
             else{
                 CandidateVote candidate = VoteDao.getVote(cid);

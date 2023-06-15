@@ -18,7 +18,7 @@
             url = "AdminControllerServlet;jsessionid="+sess.getId();
         }
         else{
-            url = "VotingControllerServlet;jsessionid="+sess.getId();
+            url = "VotingControllerServlet1;jsessionid="+sess.getId();
         }
         
         out.println(url);

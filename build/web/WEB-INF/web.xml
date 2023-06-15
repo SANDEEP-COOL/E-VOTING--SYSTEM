@@ -72,6 +72,10 @@
         <servlet-name>GetCandidateIdToRemoveCandidateControllerServlet</servlet-name>
         <servlet-class>evoting.controllers.GetCandidateIdToRemoveCandidateControllerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetCandOfVoterControllerServlet</servlet-name>
+        <servlet-class>evoting.controllers.GetCandOfVoterControllerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrationControllerServlet</servlet-name>
         <url-pattern>/RegistrationControllerServlet</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>GetCandidateIdToRemoveCandidateControllerServlet</servlet-name>
         <url-pattern>/GetCandidateIdToRemoveCandidateControllerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetCandOfVoterControllerServlet</servlet-name>
+        <url-pattern>/GetCandOfVoterControllerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

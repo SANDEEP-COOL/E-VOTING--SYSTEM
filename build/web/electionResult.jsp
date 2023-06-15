@@ -44,6 +44,7 @@
                     }
                     LinkedHashMap<CandidateDetails, Integer> result = (LinkedHashMap<CandidateDetails, Integer>) request.getAttribute("result");
                     Integer totalvote = (Integer)request.getAttribute("votecount");
+                    System.out.println("--- = "+totalvote);
                     Iterator it = result.entrySet().iterator();
                     while(it.hasNext()){
                         Map.Entry<CandidateDetails, Integer> e = (Map.Entry)it.next();
@@ -55,7 +56,9 @@
                         String cuid = candidate.getUserid();
 //                        String symbol = candidate.getSymbol(); 
                         float vote = (float) result.get(candidate);
-                        float perVote = (vote / 100) * (float) totalvote;
+//                        float perVote = (vote / 100) * (float) totalvote;
+                        float perVote = (vote / (float) totalvote) * 100;
+                        System.out.println("*/*/*/*/*/* vote = "+vote+" pervote = "+perVote);
                   %>
                    <tr>
                     <th scope="row "><%= count++ %></th>

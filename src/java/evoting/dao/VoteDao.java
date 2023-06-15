@@ -29,7 +29,7 @@ public class VoteDao {
 //            agar voter ne kisi ko bhi vote nahi diya hai tab sab kuch kar lene ke baad mtlb user se vote dalwaane ke baad hume voter ko db me register bhi karna hai... 
             ps3 = DBConnection.getConnection().prepareStatement("INSERT INTO VOTER_DETAILS VALUES (?, ?)");
             
-            ps4 = DBConnection.getConnection().prepareStatement("SELECT candidate_id, count(*) AS votes_obtained FROM candidate_details GROUP BY CANDIDATE_ID ORDER BY votes_obtained  desc");
+            ps4 = DBConnection.getConnection().prepareStatement("SELECT candidate_id, count(*) AS votes_obtained FROM voter_details GROUP BY CANDIDATE_ID ORDER BY votes_obtained  desc");
             
             st = DBConnection.getConnection().createStatement();
         }
@@ -43,6 +43,7 @@ public class VoteDao {
         Map<String , Integer> result = new LinkedHashMap<String, Integer>();
         ResultSet rs = ps4.executeQuery();
         while(rs.next()) {
+            System.out.println("[[[ = "+rs.getInt(2));
             result.put(rs.getString(1), rs.getInt(2));
         }
        return result; 

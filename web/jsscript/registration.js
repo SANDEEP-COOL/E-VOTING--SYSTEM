@@ -38,6 +38,19 @@ function addUser(){
     mobile = $('#mobile').val();
     console.log(mobile);
     
+//    gender lekar aao
+//     gender = $('input[name = "gender"]').val();
+//     console.log(gender);
+        var gender;
+        var genderRadios = document.querySelectorAll('input[type="radio"][name="gender"]');
+        genderRadios.forEach(function(radio) {
+          if (radio.checked) {
+            console.log(radio.value);
+            gender = radio.value;
+          }
+        });
+        console.log(gender); // logs the selected gender outside the loop
+
 //        means validation is passed for empty fields(user ne saare input fill kiye hai)... 
     if(validateUser()){
 
@@ -67,7 +80,8 @@ function addUser(){
                 address : address,
                 userid : adhar,
                 email : email, 
-                mobile : mobile
+                mobile : mobile,
+                gender : gender
             };
             
             for (const key in data) {
@@ -117,7 +131,9 @@ function handleError(xhr) {
 //validate whether all the fileds are filled or not... 
 function validateUser(){
     
-    if(username === ""|| password === "" || cpassword === "" || city === "" || address === "" || adhar === "" || email === "" || mobile === "" ){
+    maleRadio = document.querySelector('input[name="gender"][value="male"]');
+    femaleRadio = document.querySelector('input[name="gender"][value="female"]');
+    if(username === ""|| password === "" || cpassword === "" || city === "" || address === "" || adhar === "" || email === "" || mobile === "" || (maleRadio.checked == false && femaleRadio.checked == false)){
         swal("Error!", "All fields are mandatory", "error");
         return false;
     }

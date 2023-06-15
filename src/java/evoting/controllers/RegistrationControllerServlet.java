@@ -40,6 +40,10 @@ public class RegistrationControllerServlet extends HttpServlet {
         
         System.out.println("/////"+request.getParameter("email"));
         user.setEmailId(request.getParameter("email"));
+        
+//        change
+        System.out.println(request.getParameter("gender"));
+        user.setGender(request.getParameter("gender"));
 //        request.getParameter hume string value deta hai but hume to use long me convert karna padega...
 
         try{

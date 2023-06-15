@@ -1,16 +1,8 @@
-function redirectadministratorpage(){
-    
-//    swal hamesa hume ek promise return karta hai... 
-
-//    aur logic hum .then() ke andar likh rahe hai so that user ko ye msg tab tak dikhta rahe jab tak user redirect na ho... 
-    swal("Admin", "Redirecting To Admin Action page", "success").then((result) => {
-        window.location = "adminActions.jsp";
-    });
-}
 
 function redirectvotingpage(){
     swal("Voter", "Redirecting To Voting Controller page", "success").then((result) => {
-        window.location = "VotingControllerServlet";
+//        window.location = "VotingControllerServlet";
+          window.location = "VotingControllerServlet1";
     });
 }
 

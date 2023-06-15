@@ -54,6 +54,7 @@
             document.getElementById('result').innerHTML  = "";
         }
         function sandeep() {
+            console.log("dd");
             clearText();
 //            removeCandidateForm();
             var newdiv = document.createElement("div");

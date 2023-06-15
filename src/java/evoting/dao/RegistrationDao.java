@@ -12,7 +12,9 @@ public class RegistrationDao {
         
         try{
             ps = DBConnection.getConnection().prepareStatement("select * from user_details where adhar_no = ?");
-            ps1 = DBConnection.getConnection().prepareStatement("insert into user_details values(?, ?, ?, ?, ?, ?, ?, ?)");
+            
+//            change
+            ps1 = DBConnection.getConnection().prepareStatement("insert into user_details values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
         }
         
         catch(SQLException ex){
@@ -37,6 +39,7 @@ public class RegistrationDao {
         ps1.setString(6, user.getEmailId());
         ps1.setLong(7, user.getMobile());
         ps1.setString(8, "voter");
+        ps1.setString(9, user.getGender());
         return ps1.executeUpdate() != 0;
     }
 }

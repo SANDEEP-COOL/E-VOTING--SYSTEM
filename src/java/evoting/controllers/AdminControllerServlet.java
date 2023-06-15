@@ -38,6 +38,7 @@ public class AdminControllerServlet extends HttpServlet {
 
 //              user logged in hai... 
 //              ab agar user logged in hai iska matlab hume is request ko aage continue rekhna hai isiye hum yaha par forward use karenge...
+                System.out.println("hhh");
                 rd = request.getRequestDispatcher("adminOptions1.jsp");
 
         }

@@ -78,6 +78,17 @@ public class UserDetails {
         this.city = city;
         this.password = password;
     }
+
+    public UserDetails(String username, String userid, String emailid, String address, long mobile, String city, String password, String gender) {
+        this.username = username;
+        this.userid = userid;
+        this.emailid = emailid;
+        this.address = address;
+        this.mobile = mobile;
+        this.city = city;
+        this.password = password;
+        this.gender = gender;
+    }
     private String username;
     private String userid;
     private String emailid;
@@ -85,4 +96,16 @@ public class UserDetails {
     private long mobile;
     private String city;
     private String password;
+    
+//    change
+    private String gender;
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    
 }

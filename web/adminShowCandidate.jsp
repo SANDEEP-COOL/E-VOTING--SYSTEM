@@ -35,7 +35,8 @@
     }
     else if(result != null && result.equalsIgnoreCase("details")){
         CandidateDetails candidate = (CandidateDetails)request.getAttribute("candidate");
-        String str = "<img src='data:image/jpeg;base64," + candidate.getSymbol() + "' style='width:300px;height:200px;'/>";
+//        String str = "<img src='data:image/jpeg;base64," + candidate.getSymbol() + "' style='width:300px;height:200px;'/>";
+          String str = "<img src='data:image/jpeg;base64," + candidate.getSymbol() + "' style='width: 40px'/>";
         displayBlock.append("<table>");
         displayBlock.append("<tr><th style='padding: 10px 25px'>User Id</th><td>"+candidate.getUserid()+"</td></tr>");
         displayBlock.append("<tr><th style='padding: 10px 25px'>User Name</th><td>"+candidate.getCandidatename()+"</td></tr>");
