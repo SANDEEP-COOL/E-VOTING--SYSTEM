@@ -4,6 +4,7 @@
     Author     : sande
 --%>
 
+<%@page import="evoting.dao.VoteDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.*, evoting.dto.CandidateDetails"%>
 <!DOCTYPE html>
@@ -52,12 +53,15 @@
                         String candidateid = candidate.getCandidateid();
                         String name = candidate.getCandidatename();
                         String city = candidate.getCity();
+                        System.out.println("fff = "+city);
                         String party = candidate.getParty();
                         String cuid = candidate.getUserid();
 //                        String symbol = candidate.getSymbol(); 
                         float vote = (float) result.get(candidate);
+                        float totalVoteOfCandidateInACity = (float)VoteDao.getCountOfCandidateAsSelectedVoterFromVoterDetials(city);
+                        System.out.println("::: = "+totalVoteOfCandidateInACity);
 //                        float perVote = (vote / 100) * (float) totalvote;
-                        float perVote = (vote / (float) totalvote) * 100;
+                        float perVote = (vote / (float) totalVoteOfCandidateInACity) * 100;
                         System.out.println("*/*/*/*/*/* vote = "+vote+" pervote = "+perVote);
                   %>
                    <tr>

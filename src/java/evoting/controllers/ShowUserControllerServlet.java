@@ -20,7 +20,6 @@ public class ShowUserControllerServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher rd = null;
-        System.out.println("done done");
         HttpSession sess = request.getSession();
         String userid = (String)sess.getAttribute("userid");
         if(userid == null) {
@@ -34,7 +33,6 @@ public class ShowUserControllerServlet extends HttpServlet {
             rd = request.getRequestDispatcher("showUsersDetails.jsp");
         }
         catch(Exception ex){
-            System.out.println("inside ShowUserControllerServlet.java");
             ex.printStackTrace();
             request.setAttribute("exception", ex);
             rd = request.getRequestDispatcher("showException.jsp");

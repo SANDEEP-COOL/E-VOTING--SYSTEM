@@ -18,7 +18,7 @@ import java.util.Map;
 
 
 public class VoteDao {
-    private static PreparedStatement ps1, ps2, ps3, ps4;
+    private static PreparedStatement ps1, ps2, ps3, ps4, ps5;
     private static Statement st;
     static{
         try{
@@ -27,23 +27,33 @@ public class VoteDao {
 //            aur ab isi candidate id ki ps2 ke ? se replace kar dena so that is candidate_id waale candidate ki hi details db se aa paaye... 
             ps2 = DBConnection.getConnection().prepareStatement("SELECT  CANDIDATE_ID, USERNAME, PARTY, SYMBOL FROM CANDIDATE_DETAILS,USER_DETAILS WHERE CANDIDATE_DETAILS.USER_ID = USER_DETAILS.ADHAR_NO AND CANDIDATE_DETAILS.CANDIDATE_ID = ?");
 //            agar voter ne kisi ko bhi vote nahi diya hai tab sab kuch kar lene ke baad mtlb user se vote dalwaane ke baad hume voter ko db me register bhi karna hai... 
-            ps3 = DBConnection.getConnection().prepareStatement("INSERT INTO VOTER_DETAILS VALUES (?, ?)");
+            ps3 = DBConnection.getConnection().prepareStatement("INSERT INTO VOTER_DETAILS VALUES (?, ?, ?)");
             
             ps4 = DBConnection.getConnection().prepareStatement("SELECT candidate_id, count(*) AS votes_obtained FROM voter_details GROUP BY CANDIDATE_ID ORDER BY votes_obtained  desc");
+            
+            ps5= DBConnection.getConnection().prepareStatement("select count(*) from voter_details where city = ?");
             
             st = DBConnection.getConnection().createStatement();
         }
         catch(SQLException sq){
-            System.out.println("inside voterDao Class in DAO");
             sq.printStackTrace();
         }
+    }
+    
+    public static int getCountOfCandidateAsSelectedVoterFromVoterDetials(String city) throws SQLException{
+        int count = 0;
+        ps5.setString(1, city);
+        ResultSet rs = ps5.executeQuery();
+        if(rs.next()) {
+            count = rs.getInt(1);
+        }
+        return count;
     }
     
     public static Map<String, Integer> getResult() throws SQLException{
         Map<String , Integer> result = new LinkedHashMap<String, Integer>();
         ResultSet rs = ps4.executeQuery();
         while(rs.next()) {
-            System.out.println("[[[ = "+rs.getInt(2));
             result.put(rs.getString(1), rs.getInt(2));
         }
        return result; 
@@ -102,6 +112,7 @@ public class VoteDao {
     public static boolean addVote(VoteDto obj) throws SQLException{
         ps3.setString(1, obj.getCandidateId());
         ps3.setString(2, obj.getVoterid());
+        ps3.setString(3, obj.getCity());
         return ps3.executeUpdate() != 0;
     }
 }

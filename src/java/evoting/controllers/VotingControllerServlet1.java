@@ -22,7 +22,6 @@ public class VotingControllerServlet1 extends HttpServlet {
             throws ServletException, IOException {
         RequestDispatcher rd = null;
         HttpSession sess = request.getSession();
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaa");
         String userid = (String)sess.getAttribute("userid");
         if(userid == null){
             sess.invalidate();
@@ -31,7 +30,6 @@ public class VotingControllerServlet1 extends HttpServlet {
         }
         try{
             String cid = VoteDao.getCandidateIdOfVoter(userid);
-            System.out.println("cid = "+cid);
             if(cid == null){
                 ArrayList<CandidateVote> candidatelist = CandidateDao.viewCandidate(userid);
                 request.setAttribute("candidatelist", candidatelist);
@@ -45,7 +43,6 @@ public class VotingControllerServlet1 extends HttpServlet {
             }
         } 
         catch(Exception ex){
-            System.out.println("exception inside VotingControllerServlet");
             ex.printStackTrace();
             request.setAttribute("exception", ex);
             rd = request.getRequestDispatcher("showException.jsp");

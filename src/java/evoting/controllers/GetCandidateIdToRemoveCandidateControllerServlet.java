@@ -29,13 +29,11 @@ public class GetCandidateIdToRemoveCandidateControllerServlet extends HttpServle
         try{
 
             ArrayList<String> candidateids = CandidateDao.getCandidateIds();
-            System.out.println(candidateids+"{}{}");
             request.setAttribute("candidateids", candidateids);
             rd = request.getRequestDispatcher("removeUserJspPage.jsp");
         }
         catch(Exception ex){
             ex.printStackTrace();
-            System.out.println("Exception in RemoveUserControllerServlet.java");
             rd = request.getRequestDispatcher("showException.jsp");
         }
         finally{

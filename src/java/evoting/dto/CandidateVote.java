@@ -43,6 +43,14 @@ public class CandidateVote {
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
+    
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     public CandidateVote(String candidateId, String candidateName, String party, String symbol) {
         this.candidateId = candidateId;
@@ -54,5 +62,7 @@ public class CandidateVote {
     private String candidateName;
     private String party;
     private String symbol;
+    private String city;
+
     
 }

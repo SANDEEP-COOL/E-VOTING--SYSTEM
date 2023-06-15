@@ -35,7 +35,6 @@ public class ShowCandidateControllerServlet extends HttpServlet {
             }
             else{
                 CandidateDetails candidate = CandidateDao.getDetailsById(data);
-                System.out.println(candidate);
                 request.setAttribute("candidate", candidate);
                 request.setAttribute("result", "details");
             }

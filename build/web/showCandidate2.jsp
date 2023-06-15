@@ -62,7 +62,6 @@
         <div id='showCandidate' class="container mt-5 bg-transparent d-none">
             <div class="d-flex flex-row mb-3 justify-content-around flex-wrap">
                 <c:forEach items="${candidatelist}" var="candidate">
-                    
                   <div class=" bg-transparent border-danger card mb-3" style="max-width: 650px;">
                       <div class="row g-0">
                           <div class="col-md-4 d-flex justify-content-center align-items-center">
@@ -76,7 +75,7 @@
                                     <h5 class="card-text text-light mb-2">Candidate Id : ${candidate.getCandidateId()}</h5>
                                     <h5 class="card-text text-light mb-2">Party : ${candidate.getParty()}</h5>
                                    
-                                    <button  type="button" onclick="addvote('${candidate.getCandidateId()}')" class="voteBtn btn text-light  btn-outline-danger mt-2">Click For Vote</button>
+                                    <button  type="button" onclick="addvote('${candidate.getCandidateId()}', '${candidate.getCity()}')" class="voteBtn btn text-light  btn-outline-danger mt-2">Click For Vote</button>
                             </div>
                             </div>  
                         </div>
@@ -92,11 +91,11 @@
     </body>
     
     <script>
-        function addvote(candidateId) {
+        function addvote(candidateId, city) {
             
             $('.voteBtn').prop('disabled', true);
             console.log("candidateid = " + candidateId);
-            $.post('AddVoteControllerServlet', {"candidateid": candidateId}, function(response) {
+            $.post('AddVoteControllerServlet', {"candidateid": candidateId, "city" : city}, function(response) {
                 console.log("ldcnkjenkjebjhWKJFNK"+response+"type "+typeof(response));
                 if(response.trim() === "success"){
                     console.log("response = "+response);

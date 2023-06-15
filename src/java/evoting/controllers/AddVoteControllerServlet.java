@@ -28,8 +28,8 @@ public class AddVoteControllerServlet extends HttpServlet {
         }
         try{
             String candidateid = (String)request.getParameter("candidateid");
-            System.out.println("Candidate Id = "+candidateid);
-            VoteDto vote = new VoteDto(candidateid, userid);
+            String city = (String)request.getParameter("city");
+            VoteDto vote = new VoteDto(candidateid, userid, city);
             boolean ans = VoteDao.addVote(vote);
             CandidateVote candidate = VoteDao.getVote(candidateid);
             if(ans == true) {
@@ -39,7 +39,6 @@ public class AddVoteControllerServlet extends HttpServlet {
             rd = request.getRequestDispatcher("verifyVote.jsp");
         }
         catch(Exception ex) {
-            System.out.println("exception inside AddVoteControllerServlet.java");
             ex.printStackTrace();
             request.setAttribute("exception", ex);
             rd = request.getRequestDispatcher("showException.js");

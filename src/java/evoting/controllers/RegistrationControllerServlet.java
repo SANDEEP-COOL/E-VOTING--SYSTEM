@@ -18,7 +18,6 @@ public class RegistrationControllerServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        System.out.println("chal");
 //        request dispatcher ka object bana liya...
         RequestDispatcher rd = null;
         
@@ -26,38 +25,30 @@ public class RegistrationControllerServlet extends HttpServlet {
         UserDetails user = new UserDetails();
         
 //        ab ajax ka deta means user ki details ko AJAX se fetch karna hai...
-        System.out.println("/////"+request.getParameter("userid"));
         user.setUserId(request.getParameter("userid"));
         
-        System.out.println("/////"+request.getParameter("password"));
         user.setPassword(request.getParameter("password"));
         
-        System.out.println("/////"+request.getParameter("address"));
         user.setAddress(request.getParameter("address"));
         
-        System.out.println("/////"+request.getParameter("city"));
         user.setCity(request.getParameter("city"));
         
-        System.out.println("/////"+request.getParameter("email"));
         user.setEmailId(request.getParameter("email"));
         
 //        change
-        System.out.println(request.getParameter("gender"));
         user.setGender(request.getParameter("gender"));
 //        request.getParameter hume string value deta hai but hume to use long me convert karna padega...
 
         try{
-            System.out.println("/////"+request.getParameter("mobile"));
             user.setMobile(Long.parseLong(request.getParameter("mobile")));
         }
         catch(NumberFormatException nfe){
             nfe.printStackTrace();
             return;
         }
-        System.out.println("/////"+request.getParameter("username"));
+
         user.setUserName(request.getParameter("username"));
-        
-        System.out.println(user.toString());
+
       
 //        ab humne try isliye lagaya hai kyuki ab code database se interact karega...
         try{
@@ -67,7 +58,6 @@ public class RegistrationControllerServlet extends HttpServlet {
             if(!RegistrationDao.searchUser(user.getUserId())){
 //                means user ko register karna chahiye... 
                 result = RegistrationDao.registerUser(user);
-                System.out.println("result = "+result);
             }
 //                means user pehle se hi exist karta hai... 
             else
@@ -84,9 +74,7 @@ public class RegistrationControllerServlet extends HttpServlet {
             request.setAttribute("username", user.getUserName());
 
 //                ab agar koi exception nahi h , to jsp ko data send karne ke liye hume RequestDispatcher need hai... 
-            System.out.println("all attributes are set");
             rd = request.getRequestDispatcher("registrationresponse.jsp");
-            System.out.println("sent to jsp");
         }
         catch(SQLException ex){
             ex.printStackTrace();
@@ -97,12 +85,10 @@ public class RegistrationControllerServlet extends HttpServlet {
             
 //            ab agar exception aati hai to hume exceptions ko handle karne ke liye ek jsp page to banana padega... 
             rd = request.getRequestDispatcher("showException.jsp");
-            System.out.println("catch ke andar ayya");
         }
         finally{
 //            ya to rd 62 line wala chalega ya phir 72 line wala... 
             rd.forward(request, response);
-            System.out.println("finally ke andar aya aur forwrd bhi chala");
             
         }
     }

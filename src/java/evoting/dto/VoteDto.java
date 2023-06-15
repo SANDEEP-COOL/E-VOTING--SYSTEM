@@ -29,6 +29,24 @@ public class VoteDto {
         this.candidateid = candidateId;
         this.voterid = voterid;
     }
+
+    public VoteDto(String candidateid, String voterid, String city) {
+        this.candidateid = candidateid;
+        this.voterid = voterid;
+        this.city = city;
+    }
+    
+     public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+    
     private String candidateid;
     private String voterid;
+    private String city;
+
+   
 }

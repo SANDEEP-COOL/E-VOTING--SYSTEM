@@ -28,14 +28,11 @@ public class GetCandidateDetailsForUser extends HttpServlet {
             
             String cid = (String)request.getParameter("cid");
                
-            System.out.println("444"+cid);
             CandidateDetails candidate = CandidateDao.getDetailsById(cid);
-            System.out.println(candidate+"6531765754");
             request.setAttribute("cid", candidate);
             rd = request.getRequestDispatcher("getCandidateDetailsForUserJsp.jsp");
         }
         catch(Exception ex){
-            System.out.println("inside GetCandidateDetailsForUser");
             request.setAttribute("exception", ex);
             rd = request.getRequestDispatcher("showException.jsp");
         }

@@ -22,7 +22,6 @@ public class AddNewCandidateControllerServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("AddNewCandidateControllerServlet me aa gaya");
         RequestDispatcher rd = null;
 //        FileItem...
 //          ServletFileUpload... 
@@ -46,16 +45,15 @@ public class AddNewCandidateControllerServlet extends HttpServlet {
 //                    text... 
                     String key = item.getFieldName();
                     String val = item.getString();
-                    System.out.println("Inside If key = "+key+" and value = "+val);
+                    
                     objvalues.add(val);
                 }
                 else{
 //                    file...
                     file = item.getInputStream();
-                    System.out.println("file = "+file);
+                    
                     String key = item.getFieldName();
                     String name = item.getName();
-                    System.out.println("Inside Else key = "+key+" and name = "+name);
                 }
             }
             
@@ -63,36 +61,21 @@ public class AddNewCandidateControllerServlet extends HttpServlet {
             String party = objvalues.get(2);
             String city = objvalues.get(3);
             boolean ans = CandidateDao.validateCandidateBaseUponCityAndParty(city, party);
-            System.out.println("answer = "+ans);
             if(ans == false){
-                System.out.println("candidate add nahi ho sakta");
                 request.setAttribute("city", city);
                 request.setAttribute("party", party);
                 rd = request.getRequestDispatcher("CandidateCanNotPartInContest.jsp");
             }
             else if(ans == true){
-                System.out.println("candidate add ho sakta");
-                System.out.println("objvalues = "+objvalues);
                 CandidateDto candidate = new CandidateDto(objvalues.get(0), objvalues.get(2), objvalues.get(3), objvalues.get(1), file);
                 boolean result = CandidateDao.addCandidate(candidate);
-                System.out.println(result);
                 if(result == true)
                     rd = request.getRequestDispatcher("success.jsp");
                 else
                     rd = request.getRequestDispatcher("failure.jsp");
             }
-//            change     
-//            System.out.println("objvalues = "+objvalues);
-//            CandidateDto candidate = new CandidateDto(objvalues.get(0), objvalues.get(2), objvalues.get(3), objvalues.get(1), file);
-//            boolean result = CandidateDao.addCandidate(candidate);
-//            System.out.println(result);
-//            if(result == true)
-//                rd = request.getRequestDispatcher("success.jsp");
-//            else
-//                rd = request.getRequestDispatcher("failure.jsp");
         }
         catch(Exception ex){
-            System.out.println("Exception in AddNewCandidateControllerServlet");
             ex.printStackTrace();
             request.setAttribute("exception", ex);
             rd = request.getRequestDispatcher("showException.jsp");

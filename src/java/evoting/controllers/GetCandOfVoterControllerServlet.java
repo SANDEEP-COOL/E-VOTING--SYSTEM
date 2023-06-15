@@ -32,7 +32,6 @@ public class GetCandOfVoterControllerServlet extends HttpServlet {
             response.getWriter().print(jsonStr);
         }
         catch(SQLException se){
-            System.out.println("Exception in GetCandOfVoterControllerServlet");
             se.printStackTrace();
         }
     }

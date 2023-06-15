@@ -26,7 +26,6 @@ public class LoginControllerServlet extends HttpServlet {
         UserDto user = new UserDto(userid, password);
         
         //change
-        System.out.println(user.toString());
         
 //        ab hume UserDao se interact karna hai try and catch() lagenge... 
         try{

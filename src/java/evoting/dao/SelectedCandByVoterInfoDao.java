@@ -14,7 +14,6 @@ public class SelectedCandByVoterInfoDao {
             ps = DBConnection.getConnection().prepareStatement("SELECT USERNAME, ADDRESS, CITY, EMAIL_ID, MOBILE_NO, GENDER FROM USER_DETAILS WHERE ADHAR_NO = (SELECT USER_ID FROM CANDIDATE_DETAILS WHERE CANDIDATE_ID = (SELECT CANDIDATE_ID FROM VOTER_DETAILS WHERE VOTER_ID = ?));");
         }
         catch(SQLException sq){
-            System.out.println("exception in SelectedCandByVoterInfoDao");
             sq.printStackTrace();
         }
     }
@@ -31,7 +30,6 @@ public class SelectedCandByVoterInfoDao {
             cand.setMOBILE_NO(rs.getString(5));
             cand.setGENDER(rs.getString(6));
         }
-        System.out.println("candidate = "+cand);
         return cand;
     }
 }

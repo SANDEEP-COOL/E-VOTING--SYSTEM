@@ -36,7 +36,6 @@ public class ElectionResultControllerServlet extends HttpServlet {
 //            saari Entry set ka collection humne Set me store karwa diya... 
             Set s = result.entrySet();
             
-            System.out.println("set of entryset is = "+s);
 //            aur us Set me hum iterate karenge...
             Iterator it = s.iterator();
             
@@ -46,7 +45,6 @@ public class ElectionResultControllerServlet extends HttpServlet {
             while(it.hasNext()){
 //                pehle candidate ka key value pair in form of Entry object...
                 Map.Entry<String, Integer> e = (Map.Entry)it.next();
-                System.out.println("++++ "+e);
 //                pehle candidate ki key ko get karke db se uski poori details le lo... 
                 CandidateDetails cd = CandidateDao.getDetailsById(e.getKey());
 //                resultDetails me CandidateDetails ka object aur uske corresponding votes ko LinkedHashMap me store karwa rae hai... 
@@ -59,7 +57,6 @@ public class ElectionResultControllerServlet extends HttpServlet {
             rd = request.getRequestDispatcher("electionResult.jsp");
         }
         catch(Exception ex){
-            System.out.println("inside ElectionResultContollerServlet");
             ex.printStackTrace();
             rd = request.getRequestDispatcher("showException.jsp");
         }

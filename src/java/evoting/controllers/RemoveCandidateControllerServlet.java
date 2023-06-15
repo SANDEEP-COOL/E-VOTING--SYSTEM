@@ -18,7 +18,6 @@ public class RemoveCandidateControllerServlet extends HttpServlet {
             boolean ans = CandidateDao.removeCandidate(cid); 
         }
         catch(Exception ex){
-            System.out.println("inside Remove Candidate Controller Servlet");
             ex.printStackTrace();
             response.sendRedirect("showException.jsp");
         }

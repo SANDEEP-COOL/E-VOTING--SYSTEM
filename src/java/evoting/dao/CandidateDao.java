@@ -45,7 +45,7 @@ public class CandidateDao {
 //            candidate ki deitails pull karne ke liye candidate id ke base par... 
             ps4 = DBConnection.getConnection().prepareStatement("select * from candidate_details where CANDIDATE_ID = ?");
             
-            ps5 = DBConnection.getConnection().prepareStatement("SELECT CANDIDATE_ID, USERNAME, PARTY, SYMBOL FROM candidate_details, user_details where candidate_details.USER_ID = user_details.ADHAR_NO and candidate_details.CITY = (select city from user_details where ADHAR_NO = ?);");
+            ps5 = DBConnection.getConnection().prepareStatement("SELECT candidate_details.CANDIDATE_ID, user_details.USERNAME, candidate_details.PARTY, candidate_details.SYMBOL, user_details.CITY FROM candidate_details INNER JOIN user_details ON candidate_details.USER_ID = user_details.ADHAR_NO WHERE candidate_details.CITY = (SELECT CITY FROM user_details WHERE ADHAR_NO = ?);");
         
             ps6 = DBConnection.getConnection().prepareStatement("DELETE FROM candidate_details WHERE CANDIDATE_ID = ?");
         
@@ -61,7 +61,6 @@ public class CandidateDao {
     public static boolean validateCandidateBaseUponCityAndParty(String city, String party) throws SQLException{
         ps7.setString(1, party);
         ps7.setString(2, city);
-        System.out.println("ps7 = "+ps7);
         ResultSet rs = ps7.executeQuery();
         if(rs.next())
             return false;
@@ -71,7 +70,6 @@ public class CandidateDao {
 //      change    
     
     public static boolean removeCandidate(String cid) throws SQLException{
-        System.out.println("cid = "+cid);
         ps6.setString(1, cid);
         int ans = ps6.executeUpdate();
         if(ans == 1)
@@ -94,7 +92,6 @@ public class CandidateDao {
     
 //    adhar id ke base par username... 
     public static  String getUserNameById(String uid) throws SQLException{
-        System.out.println("uid = "+uid);
         ps1.setString(1, uid);
         ResultSet rs = ps1.executeQuery();
         if(rs.next()){
@@ -122,7 +119,6 @@ public class CandidateDao {
             String party = obj.getParty();
             String user_id = obj.getUserid();
             InputStream symbol = obj.getSymbol();
-            System.out.println(symbol);
             String city = obj.getCity();
 
 
@@ -147,7 +143,6 @@ public class CandidateDao {
     
     public static CandidateDetails getDetailsById(String cid) throws SQLException, IOException{
         
-        System.out.println("////////////////////////////////ooooooooooooooooooooooooooo "+cid);
         ps4.setString(1, cid);
         ResultSet rs = ps4.executeQuery();
         CandidateDetails candidate = new CandidateDetails();
@@ -184,7 +179,6 @@ public class CandidateDao {
             candidate.setParty(rs.getString(2));
             candidate.setCity(rs.getString(5));
             candidate.setUserid(rs.getString(3));
-            System.out.println("inside Candidate Dao "+candidate);
         }
          return candidate;
     }
@@ -217,6 +211,7 @@ public class CandidateDao {
             candidatevote.setCandidateId(rs.getString(1));
             candidatevote.setCandidateName(rs.getString(2));
             candidatevote.setParty(rs.getString(3));
+            candidatevote.setCity(rs.getString(5));
             candidatevote.setSymbol(base64Image);
             candidatelist.add(candidatevote);
         }
