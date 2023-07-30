@@ -9,19 +9,26 @@
         <link href="stylesheet/pageheader.css" rel="stylesheet">
         <link href="stylesheet/admin.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!--<script src="jsscript/adminOptionsManageCan.js"></script>-->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <style>
             body{
                 height: 150%;
             }
+            .customeFont{
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 900;
+                font-size: 30px;
+            }
         </style>
         <title>manage candidate</title>
     </head>
     <body>
         
+        
         <%
+            
             String userid=(String)session.getAttribute("userid");
             if(userid==null)
             {
@@ -29,16 +36,25 @@
                 return;
             }
             StringBuffer sf = new StringBuffer();
-            sf.append("<div class='container d-flex flex-row mb-3'>"
+            
+            StringBuffer sf1 = new StringBuffer();
+            
+            sf1.append("<div><div class='candidate'>VoteForChange</div></br>"
+                    + "<div class='subcandidate'>Manage Candidate</div>"
+                    + "<div class='logout '><a href = 'logout.html'>logout</a></div>"
+                    + "</div><div class='button mt-5'>");
+            out.println(sf1);
+            
+            sf.append("<div class='container d-flex flex-row  mb-3'>"
                     + "<div onclick='showaddcandidateform()' class='shadow-lg p-3 mb-5 bg-body-tertiary rounded mx-2' style='width: 350px; height: 250px; background-image: url(images/addcandidate.png); background-size: cover; backgroun-repeat: no-repeat'></div>"
                     + "<div onclick='showupdatecandidateform()' class='shadow-lg p-3 mb-5 bg-body-tertiary rounded mx-2' style='width: 350px; height: 250px; background-image: url(images/update1.jpg); background-repeat: no-repeat; background-size: cover'></div>"
                     + "<div onclick='sandeep()' class='shadow-lg p-3 mb-5 bg-body-tertiary rounded mx-2' style='width: 350px; height: 250px; background-image: url(images/candidate.jpg); background-size: cover; background-size: background-repeat: no-repeat'></div>"
                     + "<div onclick='deletecandidate()' class='shadow-lg p-3 mb-5 bg-body-tertiary rounded mx-2' style='width: 350px; height: 250px; background-image: url(images/update3.jpg); background-size: cover; background-repeat: no-repeat'></div></div>"
                     + "<div class='container d-flex flex-row justify-content-around' style='justify-content: space-around; padding-top: 0px'>"
-                    + "<div class='text-light'>Add Candidate</div>"
-                    + "<div class='text-light'>Update Candidate</div>"
-                    + "<div class='text-light'>Show Candidate</div>"
-                    + "<div class='text-light'>Delete Candidate</div>"
+                    + "<div class='text-light customeFont'>Add Candidate</div>"
+                    + "<div class='text-light customeFont'>Update Candidate</div>"
+                    + "<div class='text-light customeFont'>Show Candidate</div>"
+                    + "<div class='text-light customeFont'>Delete Candidate</div>"
                     + "</div>"
                     + "<div class='mt-5'  align='center' id='result'></div>");  //style='justify-content: space-around; padding-top: 30px' class='text-light container '
             
@@ -225,7 +241,6 @@
         }
 
         function deletecandidate() {
-    console.log("chala");
     $.post('GetCandidateIdToRemoveCandidateControllerServlet', null, function(response) {
         console.log(response);
         $("#result").hide().html(response).fadeIn(3000);
@@ -236,6 +251,7 @@
             var cid = $(this).find('option:selected').text();
             console.log(cid + " " + typeof(cid));
             $.post('GetCandidateDetailsForUser', { "cid": cid }, function(response) {
+                System.out.printnl("response: "+response);
                 $("#result").hide().html(response).fadeIn(3000);
                 $('html, body').animate({
                     scrollTop: $(window).scrollTop() + 800

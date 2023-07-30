@@ -1,58 +1,25 @@
 
 package evoting.controllers;
 
-import evoting.dao.CandidateDao;
-import evoting.dao.VoteDao;
-import evoting.dto.CandidateVote;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 
-public class VotingControllerServlet1 extends HttpServlet {
 
+public class UpdateUserControllerServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher rd = null;
-        HttpSession sess = request.getSession();
-        String userid = (String)sess.getAttribute("userid");
-        if(userid == null){
-            sess.invalidate();
-            response.sendRedirect("accessdenied.html");
-            return;
-        }
-        try{
-            String cid = VoteDao.getCandidateIdOfVoter(userid);
-            if(cid == null){
-                ArrayList<CandidateVote> candidatelist = CandidateDao.viewCandidate(userid);
-                System.out.println("candidateList : "+candidatelist);
-                request.setAttribute("candidatelist", candidatelist);
-//                request.setAttribute("hello", hello);
-                rd = request.getRequestDispatcher("showCandidate2.jsp");
-            }
-            else{
-                CandidateVote candidate = VoteDao.getVote(cid);
-                request.setAttribute("candidate", candidate);
-                rd = request.getRequestDispatcher("voteDenied.jsp");
-            }
-        } 
-        catch(Exception ex){
-            ex.printStackTrace();
-            request.setAttribute("exception", ex);
-            rd = request.getRequestDispatcher("showException.jsp");
-        }
-        finally{
-            
-            rd.forward(request, response);
-            return;
-        }
+        
+        
+        response.setContentType("text/html;charset=UTF-8");
+        System.out.println("aya");
+        
+      
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

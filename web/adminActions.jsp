@@ -8,7 +8,7 @@
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <link href="stylesheet/backgroundimage.css" rel="stylesheet">
         <link href="stylesheet/pageheader.css" rel="stylesheet">
-        <!--<link href="stylesheet/admin.css" rel="stylesheet">-->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
@@ -43,6 +43,11 @@
             .shadow{
                 box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
             }
+            .customeFont{
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 900;
+                font-size: 30px;
+             }
         </style>
     </head>
     <body>
@@ -79,18 +84,18 @@
             </div>
         </div>-->
 
-        <div class="resp1 d-flex justify-content-center align-items-center">3
+        <div class="resp1 d-flex justify-content-center align-items-center">
             <div class="mx-3 shadow" onclick='manageuser()'>
                 <img src="images/manageUser.png" width="350px" height="250px"/>
-                <h3 class='mt-3 text-center text-light'>Manage Users</h3>
+                <h3 class='mt-3 text-center text-light customeFont'>Manage Users</h3>
             </div>
             <div class="mx-3 shadow" onclick='managecandidate()'>
                 <img src="images/candidate1.jpg" width="370px" height="250px"/>
-                <h3 class='mt-3 text-center text-light'>Manage Candidate</h3>
+                <h3 class='mt-3 text-center text-light customeFont'>Manage Candidate</h3>
             </div>
             <div class="mx-3 shadow" onclick='electionresult()'>
                 <img src="images/result.png" width="370px"/>
-                <h3 class='mt-3 text-center text-light'>View Result</h3>
+                <h3 class='mt-3 text-center text-light customeFont'>View Result</h3>
             </div>
         </div>
 

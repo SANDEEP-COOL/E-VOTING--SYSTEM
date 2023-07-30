@@ -76,6 +76,18 @@
         <servlet-name>GetCandOfVoterControllerServlet</servlet-name>
         <servlet-class>evoting.controllers.GetCandOfVoterControllerServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateUserControllerServlet</servlet-name>
+        <servlet-class>evoting.controllers.UpdateUserControllerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteUserFromDBControllerServlet</servlet-name>
+        <servlet-class>evoting.controllers.DeleteUserFromDBControllerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoveUserServlet</servlet-name>
+        <servlet-class>evoting.controllers.RemoveUserServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrationControllerServlet</servlet-name>
         <url-pattern>/RegistrationControllerServlet</url-pattern>
@@ -151,6 +163,18 @@
     <servlet-mapping>
         <servlet-name>GetCandOfVoterControllerServlet</servlet-name>
         <url-pattern>/GetCandOfVoterControllerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserControllerServlet</servlet-name>
+        <url-pattern>/UpdateUserControllerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteUserFromDBControllerServlet</servlet-name>
+        <url-pattern>/DeleteUserFromDBControllerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveUserServlet</servlet-name>
+        <url-pattern>/RemoveUserServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

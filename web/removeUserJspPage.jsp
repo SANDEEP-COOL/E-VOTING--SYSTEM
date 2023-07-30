@@ -18,7 +18,7 @@
         <%
             ArrayList<String> candidateids = (ArrayList)request.getAttribute("candidateids");
             StringBuffer sf = new StringBuffer();
-            sf.append("<select class='form-select bg-dark text-light' id='myselect' value='Choose Id Here' aria-label='Default Select Example'>"
+            sf.append("<select style='width: 80%' class='form-select bg-dark text-light' id='myselect' value='Choose Id Here' aria-label='Default Select Example'>"
             + "<option selected>Choose Id Here</option>");
             for(String id : candidateids){
                 sf.append("<option class='bg-dark text-light'>"+id+"</option>");

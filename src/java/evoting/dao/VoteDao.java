@@ -31,7 +31,8 @@ public class VoteDao {
             
             ps4 = DBConnection.getConnection().prepareStatement("SELECT candidate_id, count(*) AS votes_obtained FROM voter_details GROUP BY CANDIDATE_ID ORDER BY votes_obtained  desc");
             
-            ps5= DBConnection.getConnection().prepareStatement("select count(*) from voter_details where city = ?");
+//            ps5= DBConnection.getConnection().prepareStatement("select count(*) from voter_details where city = ?");
+            ps5= DBConnection.getConnection().prepareStatement("select count(*) from candidate_details where city = ?");
             
             st = DBConnection.getConnection().createStatement();
         }
@@ -61,6 +62,7 @@ public class VoteDao {
     
     public static Integer getVoteCount() throws SQLException{
         ResultSet rs = st.executeQuery("SELECT count(*) as total_votes FROM candidate_details");
+//        ResultSet rs = st.executeQuery("SELECT count(*) as total_votes FROM voter_details");
         if(rs.next())
             return rs.getInt(1);
         return 0;
