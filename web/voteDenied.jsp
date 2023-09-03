@@ -15,6 +15,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://kit.fontawesome.com/05d425af79.js" crossorigin="anonymous"></script>
         <link href="stylesheet/pageheader.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
         <style>
             body{
                 background-image: url('images/election1.jpg');
@@ -29,16 +30,14 @@
             .shadow{
                 box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
             }
-            
+            .customeFont{
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 900;
+                font-size: 20px;
+            }
         </style>
     </head>
     <body>
-<!--        <div class="d-flex justify-content-center align-items-center" id="main">
-            <div id="box1" class="d-flex flex-column justify-content-center align-items-center bg-dark shadow-lg p-3 mb-5 rounded text-light">
-                <p>Dear Voter !! You Have Already Casted Your Vote, Now You Can Not Vote...</p>
-                <strong>Regards From Vote For Change 😌</strong>
-            </div>
-        </div>-->
      
         <%
             HttpSession sess = request.getSession();
@@ -57,62 +56,61 @@
            
         %>
 
-
-        <div class="d-flex align-items-center justify-content-center" style="width: 100vw; height: 100vh">
+        <div class="d-flex justify-content-center" style="width: 100vw; height: 100vh">
             <div class="container">
                 <table class="text-center shadow table table-dark table-striped mx-auto table-rounded" style="width: 70%">
                     <tbody>
                       <tr>
                           <th scope="col">#</th>
-                          <th class="col-6">
+                          <th class="col-6 customeFont">
                               NAME : 
                           </th>
-                          <td id="name">
+                          <td id="name" class="customeFont">
                               sss
                           </td>
                       </tr>
                        <tr>
                            <th scope="col">1</th>
-                          <th>
+                          <th class="customeFont">
                               ADDRESS : 
                           </th>
-                          <td id="add">
+                          <td id="add" class="customeFont">
                               sss
                           </td>
                       </tr>
                        <tr>
                            <th scope="col">2</th>
-                          <th>
+                          <th class="customeFont">
                               CITY : 
                           </th>
-                          <td id="city">
+                          <td id="city" class="customeFont">
                               sss
                           </td>
                       </tr>
                        <tr>
                            <th scope="col">3</th>
-                          <th>
+                          <th class="customeFont">
                               EMAIL_ID : 
                           </th>
-                          <td id="email">
+                          <td id="email" class="customeFont">
                               sss
                           </td>
                       </tr>
                        <tr>
                            <th scope="col">4</th>
-                          <th>
+                          <th class="customeFont">
                               MOBILE_NO : 
                           </th>
-                          <td id="mob">
+                          <td id="mob" class="customeFont">
                               sss
                           </td>
                       </tr>
                        <tr>
                            <th scope="col">5</th>
-                          <th>
+                          <th class="customeFont">
                               GENDER : 
                           </th>
-                          <td id="gender">
+                          <td id="gender" class="customeFont">
                               sss
                           </td>
                       </tr>

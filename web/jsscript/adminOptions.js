@@ -19,7 +19,7 @@ function redirectvotingpage(){
 //}
 
 function managecandidate(){
-    swal("Voter", "Redirecting To Candidate Management page", "success").then((result) => {
+    swal("Admin", "Redirecting To Candidate Management page", "success").then((result) => {
         window.location = "manageCandidate.jsp";
     });
 }

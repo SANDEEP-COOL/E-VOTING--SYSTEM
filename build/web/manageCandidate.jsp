@@ -251,7 +251,7 @@
             var cid = $(this).find('option:selected').text();
             console.log(cid + " " + typeof(cid));
             $.post('GetCandidateDetailsForUser', { "cid": cid }, function(response) {
-                System.out.printnl("response: "+response);
+//                System.out.printnl("response: "+response);
                 $("#result").hide().html(response).fadeIn(3000);
                 $('html, body').animate({
                     scrollTop: $(window).scrollTop() + 800
